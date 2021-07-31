@@ -2,7 +2,7 @@
 
 So far this is a blank slate for my Crypto Trader app.
 
-This app will utilize 
+This app will utilize:
 - React.JS
 - Framer-motion
 - Chakra UI and some custom CSS files for the front end.
