@@ -1,4 +1,4 @@
-# Welcome to Crypto Trader
+# Welcome to Crypto Trader (In Progress)
 
 So far this is a blank slate for my Crypto Trader app.
 
