@@ -1,8 +1,15 @@
-# Welcome to Crypto Trader
+# Welcome to Crypto Trader (In Progress)
 
 So far this is a blank slate for my Crypto Trader app.
 
-This app will utilize React.JS, Framer-motion, Chakra UI, and some custom CSS files for the front end. On the back end I will be using Express.js and MongoDB.
+This app will utilize:
+- React.JS
+- Framer-motion
+- Chakra UI and some custom CSS files for the front end.
+- Express.js
+- MongoDB
+- Cryptocurrency API
+
 
 I intend to deploy this app to a live website.
 
