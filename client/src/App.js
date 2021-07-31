@@ -11,10 +11,17 @@ import {
 	Link,
 	VStack,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import myNewTheme from "./myNewTheme";
 import DisplayData from "./DisplayData";
+import SignUpCreateAccount from "./SignUpCreateAccount";
+import NumberConvert from "./NumberConvert";
+import BuyCoins from "./BuyCoins";
 
 function App() {
+	const [user, setUser] = useState("Tyler");
+	const [usdBal, setUsdBal] = useState(98630);
+
 	return (
 		<ChakraProvider theme={myNewTheme}>
 			<Box bg="primary">
@@ -34,26 +41,36 @@ function App() {
 								About us
 							</Link>
 							<Spacer></Spacer>
-							<Button
-								borderRadius="25px"
-								bg="secondary"
-								borderWidth="2px"
-								borderColor="primary"
-							>
-								Sign In
-							</Button>
-							<Button
-								borderRadius="25px"
-								bg="secondary"
-								borderWidth="2px"
-								borderColor="primary"
-							>
-								Create Account
-							</Button>
+							<Box>
+								{user ? (
+									<Flex p="5">
+										Balance: ${NumberConvert(usdBal)} USD
+									</Flex>
+								) : (
+									<Box></Box>
+								)}
+							</Box>
+							<Box>
+								{user ? (
+									<Text
+										fontSize="xl"
+										fontWeight="bold"
+										p="3"
+										borderRadius="10"
+										border="1px"
+									>
+										{user}
+									</Text>
+								) : (
+									<Box>
+										<SignUpCreateAccount />
+									</Box>
+								)}
+							</Box>
 						</Flex>
 					</Box>
 				</Flex>
-				<DisplayData />
+				<BuyCoins />
 			</Box>
 		</ChakraProvider>
 	);

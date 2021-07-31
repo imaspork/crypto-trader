@@ -1,48 +1,40 @@
 {
-  "name": "crypto-trader",
-  "version": "0.1.0",
-  "private": true,
-"main": "server.js",
-  "dependencies": {
-    "@chakra-ui/react": "^1.6.5",
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "framer-motion": "^4.1.17",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1",
-"body-parser": "^1.19.0",
+	"name": "crypto-trader",
+	"version": "0.1.0",
+	"private": true,
+	"main": "server.js",
+	"dependencies": {
+		"body-parser": "^1.19.0",
 		"concurrently": "^6.2.0",
 		"express": "^4.17.1",
 		"mongoose": "^5.13.5"
-  },
-"devDependencies": {
+	},
+	"devDependencies": {
 		"nodemon": "^2.0.12"
 	},
-  "scripts": {
-    "start": "node server.js",
-		"server": "nodemon server.js"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"scripts": {
+		"client-install": "npm install --prefix client",
+		"start": "node server.js",
+		"server": "nodemon server.js",
+		"client": "npm start --prefix client",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }
