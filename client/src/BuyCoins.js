@@ -1,11 +1,10 @@
 import React from "react";
 import NumberConvert from "./NumberConvert";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
 	Flex,
 	Box,
 	FormControl,
-	FormLabel,
 	NumberInput,
 	NumberInputField,
 	NumberInputStepper,

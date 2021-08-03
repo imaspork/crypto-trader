@@ -43,7 +43,7 @@ function cryptoYeet() {
 		expireAt: {
 			type: Date,
 			default: Date.now,
-			index: { expires: "86400" },
+			index: { expires: "4320000" },
 		},
 	});
 
