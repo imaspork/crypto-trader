@@ -1,9 +1,7 @@
-import "./App.css";
 import { ChakraProvider, Box } from "@chakra-ui/react";
 import { useState } from "react";
 import myNewTheme from "./myNewTheme";
 import Home from "./Home";
-import SignUpCreateAccount from "./SignUpCreateAccount";
 import BuyCoins from "./BuyCoins";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./Navbar";

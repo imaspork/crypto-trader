@@ -1,3 +1,14 @@
 .secondary-color {
 	color: #9b009e;
 }
+
+/* SVG fill classes */
+.cls-1 {
+	fill: rgba(248, 0, 0, 0);
+}
+.cls-2 {
+	fill: #9c049f;
+}
+.cls-3 {
+	fill: #060606;
+}

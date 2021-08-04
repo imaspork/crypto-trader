@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import "./AppStyle.css";
 import SvgGraph from "./SVG";
-import SignUpCreateAccount from "./SignUpCreateAccount";
+
 import SignUp from "./SignUp";
 
 const Home = () => {
@@ -25,7 +25,7 @@ const Home = () => {
 				alignItems="center"
 			>
 				<Box>
-					<SvgGraph width="35em" height="35em" fill="#9b009e" />
+					<SvgGraph width="35em" height="35em" />
 				</Box>
 				<Box>
 					<Heading

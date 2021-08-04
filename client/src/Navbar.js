@@ -1,6 +1,7 @@
 import React from "react";
-import { Flex, Box, Spacer, Heading, Text } from "@chakra-ui/react";
-import SignUpCreateAccount from "./SignUpCreateAccount";
+import { Flex, Box, Spacer, Heading, Text, HStack } from "@chakra-ui/react";
+import SignUp from "./SignUp";
+import SignIn from "./SignIn";
 
 import { Link } from "react-router-dom";
 
@@ -37,9 +38,14 @@ const Navbar = () => {
 					</Link>
 					<Spacer></Spacer>
 
-					<Box>
-						<SignUpCreateAccount />
-					</Box>
+					<HStack>
+						<Link to="/signin">
+							<SignIn />
+						</Link>
+						<Link to="signup">
+							<SignUp />
+						</Link>
+					</HStack>
 				</Flex>
 			</Box>
 		</Flex>
