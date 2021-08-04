@@ -54,11 +54,6 @@ const Home = () => {
 							cryptocurrencies{" "}
 							<span className="secondary-color">instantly.</span>
 						</Text>
-						<Box pt="5">
-							<Link to="/">
-								<SignUp />
-							</Link>
-						</Box>
 					</Box>
 				</Flex>
 			</Box>
