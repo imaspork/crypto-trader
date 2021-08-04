@@ -31,9 +31,10 @@ const Navbar = () => {
 							Features
 						</Text>
 					</Link>
-					<Link to="/buycoins">
+
+					<Link to="/coins">
 						<Text fontWeight="bold" p="3">
-							Buy Coin
+							Coins
 						</Text>
 					</Link>
 					<Spacer></Spacer>

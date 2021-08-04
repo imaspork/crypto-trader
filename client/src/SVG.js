@@ -6,8 +6,9 @@ const SvgGraph = (props) => {
 			data-name="Layer 1"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 1513.65 1571"
-			height="2000"
-			width="2000"
+			height="500"
+			width="500"
+			preserveAspectRatio="none"
 			{...props}
 		>
 			<defs></defs>
