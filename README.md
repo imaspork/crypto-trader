@@ -1,4 +1,5 @@
 # Welcome to Crypto Trader (In Progress)
+![plot](./client/src/logocrypto.png)
 
 So far this is a blank slate for my Crypto Trader app.
 
