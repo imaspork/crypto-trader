@@ -25,7 +25,7 @@ import SvgGraph from "./SVG";
 
 const coins = () => {
 	return (
-		<Box bg="primary" h="90vh">
+		<Box bg="offwhite" h="90vh">
 			<Flex p="10em">
 				<HStack>
 					<Box>
@@ -69,7 +69,11 @@ const coins = () => {
 									Buy
 								</Button>
 								<FormControl id="amount">
-									<NumberInput step={0.1} min={0}>
+									<NumberInput
+										step={0.1}
+										min={0}
+										borderColor="secondary"
+									>
 										<NumberInputField placeholder="amount" />
 										<NumberInputStepper>
 											<NumberIncrementStepper />

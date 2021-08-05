@@ -5,7 +5,7 @@ const myNewTheme = extendTheme({
 		primary: "#241F25",
 		secondary: "rgb(152, 191, 100)",
 		black: "#000000",
-		offwhite: "#F1F1F1",
+		offwhite: "#e8ece7",
 	},
 	fonts: {
 		heading: '"Montserrat", sans-serif',

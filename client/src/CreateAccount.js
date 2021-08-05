@@ -15,9 +15,9 @@ import {
 import { FcGoogle } from "react-icons/fc";
 const CreateAccount = () => {
 	return (
-		<Box h="90vh" bg="primary">
-			<Container left="300px" h="90vh" bg="secondary" position="absolute">
-				<Flex justifyContent="center">
+		<Box h="90vh" bg="offwhite">
+			<Container left="300px" h="90vh" bg="white" position="absolute">
+				<Flex justifyContent="center" p="5">
 					<Heading> Create your account</Heading>
 				</Flex>
 				<Container>
@@ -46,10 +46,10 @@ const CreateAccount = () => {
 					<Container>
 						<Flex p="3">
 							<Spacer />
-							<Button>Create Account</Button>
+							<Button bg="secondary">Create Account</Button>
 						</Flex>
 						<Flex justifyContent="center">
-							<Box borderRadius="10%" bg="white">
+							<Box borderRadius="10%" bg="white" shadow="4xl">
 								<FcGoogle size="50" />
 							</Box>
 						</Flex>
