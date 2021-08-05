@@ -1,19 +1,8 @@
 import React from "react";
-import {
-	Box,
-	Text,
-	Heading,
-	Container,
-	HStack,
-	Stack,
-	Flex,
-} from "@chakra-ui/react";
+import { Box, Text, Heading, Flex } from "@chakra-ui/react";
 import "./AppStyle.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import SvgGraph from "./SVG";
-import SvgLogo from "./SvgLogo";
-
-import SignUp from "./SignUp";
 
 const Home = () => {
 	return (

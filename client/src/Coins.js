@@ -5,20 +5,15 @@ import {
 	HStack,
 	Flex,
 	Heading,
-	VStack,
 	Text,
 	Spacer,
 	Button,
-	Input,
 	NumberInput,
 	NumberInputField,
 	NumberInputStepper,
 	NumberIncrementStepper,
 	NumberDecrementStepper,
 	FormControl,
-	FormLabel,
-	FormErrorMessage,
-	FormHelperText,
 } from "@chakra-ui/react";
 
 import SvgGraph from "./SVG";

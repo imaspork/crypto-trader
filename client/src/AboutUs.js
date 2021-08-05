@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Box, Heading, Center } from "@chakra-ui/react";
+import { Heading, Center } from "@chakra-ui/react";
 import SvgLogo from "./SvgLogo";
 
 const AboutUs = () => {

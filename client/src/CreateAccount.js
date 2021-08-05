@@ -3,13 +3,9 @@ import { Box, Container, Flex, Heading, HStack } from "@chakra-ui/layout";
 import {
 	FormControl,
 	FormLabel,
-	FormErrorMessage,
-	FormHelperText,
 	Input,
-	Center,
 	Button,
 	Spacer,
-	VStack,
 } from "@chakra-ui/react";
 
 import { FcGoogle } from "react-icons/fc";

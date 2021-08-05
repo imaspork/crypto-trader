@@ -18,7 +18,7 @@ import { FcGoogle } from "react-icons/fc";
 
 const LogIn = () => {
 	return (
-		<Center h="90vh" bg="primary" color="black">
+		<Center h="90vh" bg="offwhite" color="black">
 			<Container>
 				<Flex justifyContent="center">
 					<Heading> Sign In</Heading>
@@ -27,19 +27,21 @@ const LogIn = () => {
 					<VStack spacing={3}>
 						<FormControl p="3" id="username">
 							<FormLabel>Username</FormLabel>
-							<Input type="user" />
+							<Input type="user" borderColor="black" />
 						</FormControl>
 						<FormControl p="3" id="username">
 							<FormLabel>Password</FormLabel>
-							<Input type="password" />
+							<Input type="password" borderColor="black" />
 						</FormControl>
 					</VStack>
 
 					<Container>
 						<Flex justifyContent="center">
 							<VStack spacing={4}>
-								<Button>Sign In</Button>
-								<Box borderRadius="10%" bg="white">
+								<Button shadow="md" bg="secondary">
+									Sign In
+								</Button>
+								<Box borderRadius="10%" shadow="md">
 									<FcGoogle size="50" />
 								</Box>
 							</VStack>
