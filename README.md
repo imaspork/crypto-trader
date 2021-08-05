@@ -1,16 +1,17 @@
 # Welcome to Crypto Trader (In Progress)
-![plot](./client/src/logocrypto.png)
+
+<a href="url"><img src="./client/src/logocrypto.png" align="left" height="48" width="48" ></a>
 
 So far this is a blank slate for my Crypto Trader app.
 
 This app will utilize:
-- React.JS
-- Framer-motion
-- Chakra UI and some custom CSS files for the front end.
-- Express.js
-- MongoDB
-- Cryptocurrency API
 
+-   React.JS
+-   Framer-motion
+-   Chakra UI and some custom CSS files for the front end.
+-   Express.js
+-   MongoDB
+-   Cryptocurrency API
 
 I intend to deploy this app to a live website.
 
