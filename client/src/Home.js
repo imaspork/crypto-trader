@@ -11,6 +11,7 @@ import {
 import "./AppStyle.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import SvgGraph from "./SVG";
+import SvgLogo from "./SvgLogo";
 
 import SignUp from "./SignUp";
 
@@ -18,7 +19,7 @@ const Home = () => {
 	return (
 		// Set calc for box height to be user viewport - 6em
 		<Router>
-			<Box h="90vh" bg="primary">
+			<Box h="90vh" bg="offwhite">
 				<Flex
 					h="100%"
 					pl="8em"

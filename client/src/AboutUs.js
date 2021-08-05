@@ -1,10 +1,14 @@
 import React from "react";
 import { Container, Box, Heading, Center } from "@chakra-ui/react";
+import SvgLogo from "./SvgLogo";
 
 const AboutUs = () => {
 	return (
-		<Center h="90vh" bg="primary">
-			<Heading color="black">Coming Soon</Heading>
+		<Center h="90vh" bg="offwhite">
+			<Heading fontSize="6xl" color="black" pr="10">
+				About Us Coming Soon
+			</Heading>
+			<SvgLogo />
 		</Center>
 	);
 };

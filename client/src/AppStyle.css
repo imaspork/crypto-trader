@@ -1,5 +1,5 @@
 .secondary-color {
-	color: #9b009e;
+	color: rgb(152, 191, 100);
 }
 
 /* SVG fill classes */
@@ -7,8 +7,18 @@
 	fill: rgba(248, 0, 0, 0);
 }
 .cls-2 {
-	fill: #9c049f;
+	fill: rgb(152, 191, 100);
 }
 .cls-3 {
 	fill: #060606;
+}
+
+.clsL-1 {
+	fill: rgba(248, 0, 0, 0);
+}
+.clsL-2 {
+	fill: rgb(152, 191, 100);
+}
+.clsL-3 {
+	fill: rgb(152, 191, 100, 0.5);
 }

@@ -2,18 +2,22 @@ import React from "react";
 import { Flex, Box, Spacer, Heading, Text, HStack } from "@chakra-ui/react";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
+import SvgLogo from "./SvgLogo";
 
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
 	return (
 		<Flex bg="primary">
-			<Box h="6em" w="100%" bg="secondary">
+			<Box h="6em" w="100%" bg="white">
 				<Flex h="100%" align="center" p="5">
 					<Link to="/">
-						<Heading size="2xl" pr="10">
-							CryptoTrader
-						</Heading>
+						<Flex alignItems="center">
+							<Heading size="xl" fontWeight="normal" pr="2">
+								CryptoTrader
+							</Heading>
+							<SvgLogo width="80" height="80" />
+						</Flex>
 					</Link>
 
 					<Link to="/aboutus">

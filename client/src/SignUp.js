@@ -3,12 +3,7 @@ import { Button } from "@chakra-ui/button";
 
 const SignUp = () => {
 	return (
-		<Button
-			borderRadius="25px"
-			bg="secondary"
-			borderWidth="2px"
-			borderColor="primary"
-		>
+		<Button borderRadius="5px" bg="secondary">
 			Create Account
 		</Button>
 	);
