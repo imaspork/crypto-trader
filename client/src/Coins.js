@@ -17,12 +17,22 @@ import {
 	Select,
 } from "@chakra-ui/react";
 import SvgGraph from "./SVG";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CryptoData from "./data/crypto.json";
 import CryptoList from "./data/Top100.json";
+import NumberFormat from "react-number-format";
 
 const Coins = () => {
-	const [Coins, useCoins] = useState(CryptoData);
+	// sets coin data
+	const [Coins] = useState(CryptoData);
+
+	// sets selected coin from dropdown
+	const [selectedCoin, setSelectedCoin] = useState(null);
+
+	const myCoin = Coins.find((item) => {
+		return item.name === selectedCoin;
+	});
+
 	return (
 		<Box bg="offwhite" h="90vh">
 			<Flex p="10em">
@@ -37,37 +47,48 @@ const Coins = () => {
 							color="black"
 							justifyContent="space-around"
 						>
-							<Select placeholder="Select option">
-								{CryptoList.map((coinList100, index) => {
-									return (
-										<option value={index}>
-											{coinList100.name} (
-											{coinList100.symbol})
-										</option>
-									);
-								})}
-							</Select>
-							<Heading> Bitcoin Price (BTC)</Heading>
+							<Heading> </Heading>
 							<Flex w="95%" justifyContent="normal">
-								<Heading>{}</Heading>
+								<Heading>
+									{myCoin?.name || "no coin selected"}
+								</Heading>
 								<Spacer></Spacer>
 								<Text
 									fontSize="xl"
 									fontWeight="bold"
 									color="green.500"
 								>
-									+13.01%
+									{myCoin?.percent_change_24h || ""}
 								</Text>
 							</Flex>
 							<Flex w="95%" justifyContent="normal">
-								<Heading>1M HIGH</Heading>
+								<Heading>Value</Heading>
 								<Spacer></Spacer>
-								<Heading>$40,919.10</Heading>
+								<Heading>
+									<NumberFormat
+										value={myCoin?.price_usd || ""}
+										displayType={"text"}
+										thousandSeparator={true}
+										prefix={"$"}
+									/>
+								</Heading>
 							</Flex>
 							<Flex w="95%" justifyContent="normal">
-								<Heading>1M LOW</Heading>
+								<Heading>Coin Rank</Heading>
 								<Spacer></Spacer>
-								<Heading>$29,288.60</Heading>
+								<Heading>{myCoin?.rank || ""}</Heading>
+							</Flex>
+							<Flex w="95%" justifyContent="normal">
+								<Heading>Market Cap</Heading>
+								<Spacer></Spacer>
+								<Heading>
+									<NumberFormat
+										value={myCoin?.market_cap_usd || ""}
+										displayType={"text"}
+										thousandSeparator={true}
+										prefix={"$"}
+									/>
+								</Heading>
 							</Flex>
 							<HStack>
 								<Button
@@ -90,6 +111,24 @@ const Coins = () => {
 										</NumberInputStepper>
 									</NumberInput>
 								</FormControl>
+								<Select
+									placeholder="Select option"
+									onChange={(e) =>
+										setSelectedCoin(e.target.value)
+									}
+								>
+									{CryptoList.map((coinList100, index) => {
+										return (
+											<option
+												key={coinList100.rank}
+												value={coinList100.name}
+											>
+												{coinList100.name} (
+												{coinList100.symbol})
+											</option>
+										);
+									})}
+								</Select>
 							</HStack>
 						</Flex>
 					</Container>
