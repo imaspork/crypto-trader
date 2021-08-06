@@ -13,31 +13,36 @@ const Navbar = () => {
 				<Flex h="100%" align="center" p="5">
 					<Link to="/">
 						<Flex alignItems="center">
-							<Heading size="xl" fontWeight="normal" pr="2">
+							<SvgLogo width="80" height="80" />
+							<Heading
+								size="xl"
+								fontWeight="normal"
+								pl="5"
+								pr="3em"
+							>
 								CryptoTrader
 							</Heading>
-							<SvgLogo width="80" height="80" />
 						</Flex>
 					</Link>
 
 					<Link to="/aboutus">
-						<Text fontWeight="bold" p="3">
+						<Text fontWeight="bold" p="5">
 							About us
 						</Text>
 					</Link>
 					<Link to="/learn">
-						<Text fontWeight="bold" p="3">
+						<Text fontWeight="bold" p="5">
 							Learn
 						</Text>
 					</Link>
 					<Link to="/features">
-						<Text fontWeight="bold" p="3">
+						<Text fontWeight="bold" p="5">
 							Features
 						</Text>
 					</Link>
 
 					<Link to="/coins">
-						<Text fontWeight="bold" p="3">
+						<Text fontWeight="bold" p="5">
 							Coins
 						</Text>
 					</Link>

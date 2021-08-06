@@ -2,12 +2,9 @@ import React from "react";
 import {
 	FormControl,
 	FormLabel,
-	FormErrorMessage,
-	FormHelperText,
 	Input,
 	Center,
 	Button,
-	Spacer,
 	VStack,
 	Container,
 	Flex,

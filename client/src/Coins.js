@@ -14,11 +14,15 @@ import {
 	NumberIncrementStepper,
 	NumberDecrementStepper,
 	FormControl,
+	Select,
 } from "@chakra-ui/react";
-
 import SvgGraph from "./SVG";
+import { useState } from "react";
+import CryptoData from "./data/crypto.json";
+import CryptoList from "./data/Top100.json";
 
-const coins = () => {
+const Coins = () => {
+	const [Coins, useCoins] = useState(CryptoData);
 	return (
 		<Box bg="offwhite" h="90vh">
 			<Flex p="10em">
@@ -33,9 +37,19 @@ const coins = () => {
 							color="black"
 							justifyContent="space-around"
 						>
+							<Select placeholder="Select option">
+								{CryptoList.map((coinList100, index) => {
+									return (
+										<option value={index}>
+											{coinList100.name} (
+											{coinList100.symbol})
+										</option>
+									);
+								})}
+							</Select>
 							<Heading> Bitcoin Price (BTC)</Heading>
 							<Flex w="95%" justifyContent="normal">
-								<Heading>$39,534.20</Heading>
+								<Heading>{}</Heading>
 								<Spacer></Spacer>
 								<Text
 									fontSize="xl"
@@ -85,4 +99,4 @@ const coins = () => {
 	);
 };
 
-export default coins;
+export default Coins;

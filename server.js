@@ -7,7 +7,7 @@ const express = require("express");
 const path = require("path");
 var fs = require("fs");
 
-const filePath = path.join(__dirname, "/data/crypto.JSON");
+const filePath = path.join(__dirname, "client/src/data/crypto.json");
 
 mongoose.connect(db, { useNewUrlParser: true }, function (err) {
 	if (err) throw err;
@@ -40,18 +40,16 @@ function cryptoYeet() {
 		volume24: Number,
 		csupply: Number,
 		time: Number,
-		expireAt: {
-			type: Date,
-			default: Date.now,
-			index: { expires: "4320000" },
-		},
+		createdAt: { type: Date, expires: "262800m", default: Date.now },
 	});
+
+	cryptoSchema.index({ expireAfterSeconds: 15768000 });
 
 	const cryptos = mongoose.model("cryptos", cryptoSchema);
 
 	function onSuccess(response) {
 		let array = response.data.data;
-		console.log(array);
+
 		const writeCrypto = fs.createWriteStream(filePath);
 		writeCrypto.write("[");
 		for (let i = 0; i < array.length; i++) {
@@ -79,6 +77,21 @@ function cryptoYeet() {
 		}
 		writeCrypto.write("]");
 		writeCrypto.close();
+		const nameArray = array.map(({ name, symbol, rank }) => ({
+			name,
+			symbol,
+			rank,
+		}));
+
+		// sort top 100 coins
+		nameArray.sort((a, b) =>
+			a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0
+		);
+		fs.writeFileSync("./data/Top100.json", JSON.stringify(nameArray));
+
+		console.log(nameArray);
+
+		// getting top 100 coins
 	}
 }
 
