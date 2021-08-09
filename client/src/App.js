@@ -2,7 +2,6 @@ import { ChakraProvider, Box } from "@chakra-ui/react";
 import myNewTheme from "./myNewTheme";
 import Home from "./Home";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import CreateAccount from "./CreateAccount";
 import Navbar from "./Navbar";
 import "./AppStyle.css";
 import AboutUs from "./AboutUs";
@@ -33,9 +32,7 @@ function App() {
 						<Route path="/signin">
 							<LogIn />
 						</Route>
-						<Route path="/signup">
-							<CreateAccount />
-						</Route>
+
 						<Route path="/coins">
 							<Coins />
 						</Route>

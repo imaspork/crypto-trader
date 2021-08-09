@@ -1,51 +1,65 @@
 import React from "react";
+import { useState } from "react";
 import {
-	FormControl,
-	FormLabel,
-	Input,
 	Center,
-	Button,
 	VStack,
 	Container,
 	Flex,
 	Heading,
-	Box,
+	Link,
+	Spacer,
+	Text,
 } from "@chakra-ui/react";
 import { FcGoogle } from "react-icons/fc";
+import { googleProvider } from "./service/authMethod";
+import socialMediaAuth from "./service/auth";
 
 const LogIn = () => {
+	const [userID, setUserID] = useState(null);
+	const [userDisplayName, setUserDisplayName] = useState(null);
+
+	const handleGoogleOnClick = async (provider) => {
+		const res = await socialMediaAuth(provider);
+		setUserID(res.uid);
+		console.log(userID);
+		console.log(userDisplayName);
+		localStorage.setItem("userID", res.uid);
+		localStorage.setItem("displayName", res.displayName);
+
+		setUserDisplayName(res.displayName);
+	};
 	return (
 		<Center h="90vh" bg="offwhite" color="black">
-			<Container>
+			<VStack spacing={10}>
 				<Flex justifyContent="center">
 					<Heading> Sign In</Heading>
 				</Flex>
 				<Container>
-					<VStack spacing={3}>
-						<FormControl p="3" id="username">
-							<FormLabel>Username</FormLabel>
-							<Input type="user" borderColor="black" />
-						</FormControl>
-						<FormControl p="3" id="username">
-							<FormLabel>Password</FormLabel>
-							<Input type="password" borderColor="black" />
-						</FormControl>
-					</VStack>
-
-					<Container>
-						<Flex justifyContent="center">
-							<VStack spacing={4}>
-								<Button shadow="md" bg="secondary">
-									Sign In
-								</Button>
-								<Box borderRadius="10%" shadow="md">
-									<FcGoogle size="50" />
-								</Box>
-							</VStack>
-						</Flex>
-					</Container>
+					<Flex justifyContent="center">
+						<Link>
+							<Flex
+								alignItems="center"
+								w="20em"
+								boxShadow="md"
+								p="2"
+								borderRadius="5"
+							>
+								<FcGoogle size="50" />
+								<Spacer></Spacer>
+								<Text
+									fontWeight="normal"
+									onClick={() =>
+										handleGoogleOnClick(googleProvider)
+									}
+								>
+									Sign in with Google
+								</Text>
+								<Spacer></Spacer>
+							</Flex>
+						</Link>
+					</Flex>
 				</Container>
-			</Container>
+			</VStack>
 		</Center>
 	);
 };

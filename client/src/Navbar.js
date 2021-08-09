@@ -1,6 +1,5 @@
 import React from "react";
 import { Flex, Box, Spacer, Heading, Text, HStack } from "@chakra-ui/react";
-import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import SvgLogo from "./SvgLogo";
 
@@ -10,16 +9,11 @@ const Navbar = () => {
 	return (
 		<Flex bg="primary">
 			<Box h="6em" w="100%" bg="white">
-				<Flex h="100%" align="center" p="5">
+				<Flex h="100%" p="5" alignItems="center">
 					<Link to="/">
 						<Flex alignItems="center">
 							<SvgLogo width="80" height="80" />
-							<Heading
-								size="xl"
-								fontWeight="normal"
-								pl="5"
-								pr="3em"
-							>
+							<Heading size="xl" fontWeight="normal" pl="5">
 								CryptoTrader
 							</Heading>
 						</Flex>
@@ -47,13 +41,9 @@ const Navbar = () => {
 						</Text>
 					</Link>
 					<Spacer></Spacer>
-
 					<HStack>
 						<Link to="/signin">
 							<SignIn />
-						</Link>
-						<Link to="signup">
-							<SignUp />
 						</Link>
 					</HStack>
 				</Flex>

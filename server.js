@@ -6,6 +6,12 @@ const cron = require("node-cron");
 const express = require("express");
 const path = require("path");
 var fs = require("fs");
+const lowDb = require("lowdb");
+const FileSync = require('lowdb/adapters/FileSync');
+const bodyParser = require('body-parser')
+const cors = require('cors')
+
+const localdb
 
 const filePath = path.join(__dirname, "client/src/data/crypto.json");
 
@@ -77,17 +83,23 @@ function cryptoYeet() {
 		}
 		writeCrypto.write("]");
 		writeCrypto.close();
-		const nameArray = array.map(({ name, symbol, rank }) => ({
-			name,
-			symbol,
-			rank,
-		}));
+		const nameArray = array.map(
+			({ name, symbol, rank, market_cap_usd }) => ({
+				name,
+				symbol,
+				rank,
+				market_cap_usd,
+			})
+		);
 
 		// sort top 100 coins
 		nameArray.sort((a, b) =>
 			a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0
 		);
-		fs.writeFileSync("./data/Top100.json", JSON.stringify(nameArray));
+		fs.writeFileSync(
+			"client/src/data/Top100.json",
+			JSON.stringify(nameArray)
+		);
 
 		console.log(nameArray);
 
