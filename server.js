@@ -1,26 +1,30 @@
-const mongoose = require("mongoose");
-const axios = require("axios");
-const db = require("./config/keys").mongoURI;
-const mongoURI = require("./config/keys");
-const cron = require("node-cron");
-const express = require("express");
-const path = require("path");
-var fs = require("fs");
-const lowDb = require("lowdb");
-const FileSync = require('lowdb/adapters/FileSync');
-const bodyParser = require('body-parser')
-const cors = require('cors')
+import mongoose from "mongoose";
+import axios from "axios";
+import dotenv from "dotenv";
 
-const localdb
+dotenv.config();
+import cron from "node-cron";
+import express from "express";
+import fs from "fs";
+import path from "path";
 
-const filePath = path.join(__dirname, "client/src/data/crypto.json");
+import { join, dirname } from "path";
+import { Low, JSONFile } from "lowdb";
+import { fileURLToPath } from "url";
 
-mongoose.connect(db, { useNewUrlParser: true }, function (err) {
-	if (err) throw err;
+//converting es5 imports to es6 is such a headache jsakdhasda
 
-	console.log("Successfully connected");
-});
+mongoose.connect(
+	process.env.mongoURI,
+	{ useNewUrlParser: true },
+	function (err) {
+		if (err) throw err;
 
+		console.log("Successfully connected");
+	}
+);
+
+let filePath = "./client/src/data/crypto.json";
 // api fetch
 
 function cryptoYeet() {
