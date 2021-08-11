@@ -9,10 +9,43 @@ import fs from "fs";
 import path from "path";
 
 import { join, dirname } from "path";
-import { Low, JSONFile } from "lowdb";
+import { Low, JSONFile, JSONFileSync } from "lowdb";
 import { fileURLToPath } from "url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+import { format, parseISO, subDays } from "date-fns";
+import uuid4 from "uuid4";
 
 //converting es5 imports to es6 is such a headache jsakdhasda
+
+// reset json file for top 100
+try {
+	fs.unlinkSync("./client/src/db100.json");
+} catch (err) {
+	console.error(err);
+}
+
+fs.closeSync(fs.openSync("./client/src/db100.json", "w"));
+
+let data100obj = { graphData100: [] };
+
+fs.writeFileSync(
+	"./client/src/db100.json",
+	JSON.stringify(data100obj, null, 2),
+	"utf-8"
+);
+
+//lowdb database code
+
+const adapter = new JSONFileSync("./client/src/db.json");
+const adapter100 = new JSONFileSync("./client/src/db100.json");
+const db100 = new Low(adapter100);
+const db = new Low(adapter);
+await db100.read();
+await db.read();
+db100.data ||= { graphData100: [] };
+db.data ||= { graphData: [] };
+
+//mongodb database code
 
 mongoose.connect(
 	process.env.mongoURI,
@@ -75,7 +108,34 @@ function cryptoYeet() {
 				volume24: array[i].volume24,
 				csupply: array[i].csupply,
 				time: array[i].time,
+				identifiertag: `${array[i].name}-${array[i].symbol}-${array[i].id}`,
 			});
+			db.data.graphData.push({
+				dateCreated: new Date().toISOString().substr(0, 10),
+				price_usd: array[i].price_usd,
+				rank: array[i].rank,
+				symbol: array[i].symbol,
+				name: array[i].name,
+				id: array[i].id,
+				identifiertag: `${array[i].name}-${array[i].symbol}-${array[i].id}`,
+			});
+			db.write();
+
+			db100.data.graphData100.push({
+				id: array[i].id,
+				symbol: array[i].symbol,
+				name: array[i].name,
+				nameid: array[i].nameid,
+				rank: array[i].rank,
+				price_usd: array[i].price_usd,
+				percent_change_24h: array[i].percent_change_24h,
+				market_cap_usd: array[i].market_cap_usd,
+				volume24: array[i].volume24,
+				csupply: array[i].csupply,
+				time: array[i].time,
+				identifiertag: `${array[i].name}-${array[i].symbol}-${array[i].id}`,
+			});
+			db100.write();
 			writeCrypto.write(JSON.stringify(array[i]) + ",");
 			newCrypto.save(function (err, result) {
 				if (err) {
@@ -88,11 +148,24 @@ function cryptoYeet() {
 		writeCrypto.write("]");
 		writeCrypto.close();
 		const nameArray = array.map(
-			({ name, symbol, rank, market_cap_usd }) => ({
+			({
 				name,
 				symbol,
 				rank,
 				market_cap_usd,
+				id,
+				identifiertag,
+				price_usd,
+				nameid,
+			}) => ({
+				name,
+				symbol,
+				rank,
+				market_cap_usd,
+				id,
+				identifiertag,
+				price_usd,
+				nameid,
 			})
 		);
 
