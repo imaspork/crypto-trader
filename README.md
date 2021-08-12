@@ -10,6 +10,11 @@
 # To view the website locally
 - CD into crypto-trader/client/src and run <b> npm start </b>
 
+
+# Current status of the application:
+- Dynamic graphs and data are in place, next up is user data.
+- Currently not optimized for responsivity
+
 This app will utilize:
 
 -   React.JS
