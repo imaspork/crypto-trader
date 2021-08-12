@@ -23,4 +23,4 @@ Ending functionality will include:
 
 -   The ability to look at your portfolio history, total worth and other analytics in a text and graphical interface
 
--   The ability to look at price histories of 100 different cryptocurrencies with a graphical interface with Frappe or Nivo Rocks in order to give users a pleasant and aesthetic look.
+-   The ability to look at price histories of 100 different cryptocurrencies with a graphical interface with Recharts to give users a pleasant visual experience.
