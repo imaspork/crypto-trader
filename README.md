@@ -4,7 +4,9 @@
 
 # To run the server side of things
 - CD into base directory and run <b> node --experimental-json-modules server.js </b>
+
 <a href="url"><img src="./client/src/logocrypto.png" align="left" height="48" width="48" ></a>
+
 # To view the website locally
 - CD into crypto-trader/client/src and run <b> npm start </b>
 
