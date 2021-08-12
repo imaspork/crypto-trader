@@ -7,11 +7,12 @@ So far this is a blank slate for my Crypto Trader app.
 This app will utilize:
 
 -   React.JS
--   Framer-motion
--   Chakra UI and some custom CSS files for the front end.
--   Express.js
--   MongoDB
--   Cryptocurrency API
+-   Framer-motion (animations)
+-   Chakra UI and some custom CSS files for the front end. (Styling)
+-   Express.js (back end)
+-   MongoDB (data storing in the cloud)
+-   Cryptocurrency API (data fetching)
+-   Lowdb (local database)
 
 I intend to deploy this app to a live website.
 
