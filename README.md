@@ -2,7 +2,10 @@
 
 <a href="url"><img src="./client/src/logocrypto.png" align="left" height="48" width="48" ></a>
 
-So far this is a blank slate for my Crypto Trader app.
+# To run the server side of things
+- CD into base directory and run <b> node --experimental-json-modules server.js </b>
+# To view the website locally
+- CD into crypto-trader/client/src and run <b> npm start </b>
 
 This app will utilize:
 
