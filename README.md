@@ -14,6 +14,7 @@
 # Current status of the application:
 - Dynamic graphs and data are in place, next up is user data.
 - Currently not optimized for responsivity
+- Production of the application is on pause as I implement react-redux. I aim to refactor my code and organize my routes into separate files/folders for organizational purposes. I do not want to continue with the complexity of this application without proper organization :)
 
 This app will utilize:
 
