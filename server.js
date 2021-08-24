@@ -7,13 +7,15 @@ import cron from "node-cron";
 import express from "express";
 import fs from "fs";
 import path from "path";
+import bodyParser from "body-parser";
 
 import { join, dirname } from "path";
 import { Low, JSONFile, JSONFileSync } from "lowdb";
 import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 import { format, parseISO, subDays } from "date-fns";
-import uuid4 from "uuid4";
+
+import users from "./routes/api/users.js";
 
 //converting es5 imports to es6 is such a headache jsakdhasda
 
@@ -92,6 +94,7 @@ function cryptoYeet() {
 
 	function onSuccess(response) {
 		let array = response.data.data;
+		console.log(array);
 
 		const writeCrypto = fs.createWriteStream(filePath);
 		writeCrypto.write("[");
@@ -188,8 +191,17 @@ cron.schedule("1 0 * * *", () => {
 	cryptoYeet();
 	console.log("Crypto has been yeeted your majesty");
 });
-
-const app = express();
-app.listen(8080, null);
-
 cryptoYeet();
+const app = express();
+// middleware
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, null);
+
+//  use Routes
+
+app.use("/api/users", users);

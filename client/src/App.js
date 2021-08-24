@@ -8,7 +8,8 @@ import AboutUs from "./AboutUs";
 import Coins from "./Coins";
 import Learn from "./Learn";
 import Features from "./Features";
-import LogIn from "./LogIn";
+import LogIn from "./redux/logInPage/logInPage";
+import GetCoin from "./redux/coinPage/GetCoin";
 
 function App() {
 	return (
@@ -35,6 +36,10 @@ function App() {
 
 						<Route path="/coins">
 							<Coins />
+						</Route>
+
+						<Route path="/getcoin">
+							<GetCoin />
 						</Route>
 					</Switch>
 				</Box>

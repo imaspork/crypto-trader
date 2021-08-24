@@ -10,11 +10,10 @@ import {
 	Button,
 	NumberInput,
 	NumberInputField,
-	NumberInputStepper,
-	NumberIncrementStepper,
-	NumberDecrementStepper,
 	FormControl,
 	Select,
+	InputGroup,
+	InputLeftElement,
 } from "@chakra-ui/react";
 import {
 	ResponsiveContainer,
@@ -31,9 +30,9 @@ import { useState, useEffect } from "react";
 import db from "./db.json";
 import db100 from "./db100.json";
 import NumberFormat from "react-number-format";
-import { format, parseISO, subDays } from "date-fns";
+import { format, parseISO } from "date-fns";
 
-const Coins = () => {
+const Coins = (props) => {
 	let coins100 = db100.graphData100;
 	// sets coin data
 	const [Coins] = useState(coins100);
@@ -45,51 +44,41 @@ const Coins = () => {
 
 	useEffect(() => {}, [coinNumber]);
 
+	// Redux testing/figuring out area ******************************************************
+	//
+
+	//
+	// **************************************************************************************
+
 	const myCoin = Coins.find((item) => {
 		return item.identifiertag === selectedCoin;
 	});
+
+	// map over coin data based on selected coin in drop down menu, returns all objects with matching value
 
 	let filteredArray = db.graphData
 		.filter((obj) => obj.identifiertag === selectedCoin)
 		.map((obj) => obj);
 
-	console.log(myCoin.price_usd);
+	// iterates over array created by filteredArray and returns them in order of oldest to newest for accurate coin data on graph
 
-	// CURRENTLY GRABS FIRST 8 ITEMS - switch to filtering by last 10 indexes
-	let data = [
-		{
-			date: filteredArray[0].dateCreated,
-			price: filteredArray[0].price_usd,
-		},
-		{
-			date: filteredArray[1].dateCreated,
-			price: filteredArray[1].price_usd,
-		},
-		{
-			date: filteredArray[2].dateCreated,
-			price: filteredArray[2].price_usd,
-		},
-		{
-			date: filteredArray[3].dateCreated,
-			price: filteredArray[3].price_usd,
-		},
-		{
-			date: filteredArray[4].dateCreated,
-			price: filteredArray[4].price_usd,
-		},
-		{
-			date: filteredArray[5].dateCreated,
-			price: filteredArray[5].price_usd,
-		},
-		{
-			date: filteredArray[6].dateCreated,
-			price: filteredArray[6].price_usd,
-		},
-		{
-			date: filteredArray[7].dateCreated,
-			price: filteredArray[7].price_usd,
-		},
-	];
+	function newArray(filteredArray) {
+		let newArray = [];
+		let arrayLength = filteredArray.length;
+
+		for (let i = 0; i <= arrayLength - 1; i++) {
+			newArray.push({
+				date: filteredArray[arrayLength - i - 1].dateCreated,
+				price: filteredArray[arrayLength - i - 1].price_usd,
+			});
+		}
+		return newArray.reverse();
+	}
+
+	// const that is overwritten on page change
+
+	const currentCoinData = newArray(filteredArray);
+	// tooltip styling for text price
 
 	function CustomTooltip({ active, payload, label }) {
 		if (active) {
@@ -104,6 +93,23 @@ const Coins = () => {
 		}
 		return null;
 	}
+	// Defining coin object for pushing to database if user buys
+	var coinObjectToBuy = {
+		cryptoSymbol: myCoin.symbol,
+		USDValue: coinNumber,
+		coinCount: coinNumber / myCoin.price_usd,
+	};
+	console.log(coinObjectToBuy);
+
+	//
+
+	let coinAmountDecimalRendering = () => {
+		if (myCoin.price_usd > 25000) {
+			return (coinNumber / myCoin.price_usd).toFixed(9);
+		} else {
+			return (coinNumber / myCoin.price_usd).toFixed(5);
+		}
+	};
 
 	return (
 		<Box bg="offwhite" h="90vh">
@@ -111,7 +117,7 @@ const Coins = () => {
 				<HStack>
 					<Box h="500px" w="1000px">
 						<ResponsiveContainer width="100%" height={400}>
-							<AreaChart data={data}>
+							<AreaChart data={currentCoinData}>
 								<defs>
 									<linearGradient
 										id="color"
@@ -150,9 +156,8 @@ const Coins = () => {
 								<CartesianGrid vertical={false} opacity={0.3} />
 							</AreaChart>
 						</ResponsiveContainer>
-						;
 					</Box>
-					<Container w="xl" h="30em" alignSelf="flex-end">
+					<Container w="2xl" h="30em" alignSelf="flex-end">
 						<Flex
 							h="75%"
 							flexDirection="column"
@@ -207,6 +212,7 @@ const Coins = () => {
 							</Flex>
 							<HStack>
 								<Select
+									maxW="15em"
 									placeholder="Select option"
 									onChange={(e) =>
 										setSelectedCoin(e.target.value)
@@ -226,34 +232,33 @@ const Coins = () => {
 										);
 									})}
 								</Select>
-								<FormControl id="amount">
-									<NumberInput
-										step={0.1}
-										min={0}
-										borderColor="secondary"
-									>
-										<NumberInputField
-											placeholder="amount"
-											onChange={(event) =>
-												setCoinNumber(
-													event.target.value
-												)
-											}
-										/>
-										<NumberInputStepper>
-											<NumberIncrementStepper />
-											<NumberDecrementStepper />
-										</NumberInputStepper>
-									</NumberInput>
+								<FormControl id="amount" maxW="10em">
+									<InputGroup>
+										<InputLeftElement children="$" pr="5" />
+
+										<NumberInput
+											step={0.1}
+											min={0}
+											borderColor="secondary"
+										>
+											<NumberInputField
+												placeholder="USD Amount"
+												onChange={(event) =>
+													setCoinNumber(
+														event.target.value
+													)
+												}
+											/>
+										</NumberInput>
+									</InputGroup>
 								</FormControl>
-								<Button
-									w="8em"
-									borderRadius="20"
-									bg="secondary"
-								>
-									Buy
-								</Button>
+								<Text fontWeight="bold">
+									{coinAmountDecimalRendering()} Coins
+								</Text>
 							</HStack>
+							<Button w="100%" borderRadius="20" bg="secondary">
+								Buy
+							</Button>
 						</Flex>
 					</Container>
 				</HStack>

@@ -11,23 +11,53 @@ import {
 	Text,
 } from "@chakra-ui/react";
 import { FcGoogle } from "react-icons/fc";
-import { googleProvider } from "./service/authMethod";
-import socialMediaAuth from "./service/auth";
+import { googleProvider } from "../../service/authMethod";
+import socialMediaAuth from "../../service/auth";
+import { createSelector } from "reselect";
+import { makeLogInPage } from "./selectors";
+import { useSelector, useDispatch } from "react-redux";
+import { setLogIn } from "./actions";
+import { useHistory } from "react-router";
 
-const LogIn = () => {
+const stateSelector = createSelector(makeLogInPage, (login) => ({ login }));
+
+const actionDispatch = (dispatch) => ({
+	setLogIn: (login) => dispatch(setLogIn(login)),
+});
+
+export const LogIn = (props) => {
+	// react router
+	let history = useHistory();
+	//
 	const [userID, setUserID] = useState(null);
 	const [userDisplayName, setUserDisplayName] = useState(null);
+
+	// redux
+
+	const { login } = useSelector(stateSelector);
+	const { setLogIn } = actionDispatch(useDispatch());
+
+	//  end redux
 
 	const handleGoogleOnClick = async (provider) => {
 		const res = await socialMediaAuth(provider);
 		setUserID(res.uid);
-		console.log(userID);
-		console.log(userDisplayName);
+
 		localStorage.setItem("userID", res.uid);
-		localStorage.setItem("displayName", res.displayName);
+		localStorage.setItem("userDisplayName", res.displayName);
 
 		setUserDisplayName(res.displayName);
+		setLogIn({
+			userID: res.uid,
+			userDisplayName: res.displayName,
+		});
+
+		history.push("/coins");
 	};
+
+	console.log(
+		`user ${login.userDisplayName} has logged in and their ID is ${login.userID}`
+	);
 	return (
 		<Center h="90vh" bg="offwhite" color="black">
 			<VStack spacing={10}>
