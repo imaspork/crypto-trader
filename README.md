@@ -2,19 +2,22 @@
 
 <a href="url"><img src="./client/src/logocrypto.png" align="left" height="48" width="48" ></a>
 
-# To run the server side of things
-- CD into base directory and run <b> node --experimental-json-modules server.js </b>
+# To run the server and front end
+
+-   CD into base directory and run <b> node --experimental-json-modules server.js </b>
+-   CD into crypto-trader/client/src and run <b> npm start </b>
 
 <a href="url"><img src="./client/src/logocrypto.png" align="left" height="48" width="48" ></a>
 
-# To view the website locally
-- CD into crypto-trader/client/src and run <b> npm start </b>
+# Preview of the site
 
+<img src="./cryptopreview.png">
 
 # Current status of the application:
-- Dynamic graphs and data are in place, next up is user data.
-- Currently not optimized for responsivity
-- Production of the application is on pause as I implement react-redux. I aim to refactor my code and organize my routes into separate files/folders for organizational purposes. I do not want to continue with the complexity of this application without proper organization :)
+
+-   Dynamic graphs and data are in place, next up is user data.
+-   Currently not optimized for responsivity
+-   Production of the application is on pause as I implement react-redux. I aim to refactor my code and organize my routes into separate files/folders for organizational purposes. I do not want to continue with the complexity of this application without proper organization :)
 
 This app will utilize:
 
