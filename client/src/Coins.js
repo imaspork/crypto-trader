@@ -99,7 +99,7 @@ const Coins = (props) => {
 		USDValue: coinNumber,
 		coinCount: coinNumber / myCoin.price_usd,
 	};
-	console.log(coinObjectToBuy);
+	// console.log(coinObjectToBuy);
 
 	//
 

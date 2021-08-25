@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import axios from "axios";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 import cron from "node-cron";
@@ -94,7 +95,7 @@ function cryptoYeet() {
 
 	function onSuccess(response) {
 		let array = response.data.data;
-		console.log(array);
+		// console.log(array);
 
 		const writeCrypto = fs.createWriteStream(filePath);
 		writeCrypto.write("[");
@@ -144,7 +145,7 @@ function cryptoYeet() {
 				if (err) {
 					console.log(err);
 				} else {
-					console.log(result);
+					// console.log(result);
 				}
 			});
 		}
@@ -181,10 +182,11 @@ function cryptoYeet() {
 			JSON.stringify(nameArray)
 		);
 
-		console.log(nameArray);
+		// console.log(nameArray);
 
 		// getting top 100 coins
 	}
+	console.log("Coins have been fetched");
 }
 
 cron.schedule("1 0 * * *", () => {
@@ -194,6 +196,8 @@ cron.schedule("1 0 * * *", () => {
 cryptoYeet();
 const app = express();
 // middleware
+
+app.use(cors());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

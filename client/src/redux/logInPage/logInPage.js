@@ -18,6 +18,7 @@ import { makeLogInPage } from "./selectors";
 import { useSelector, useDispatch } from "react-redux";
 import { setLogIn } from "./actions";
 import { useHistory } from "react-router";
+import axios from "axios";
 
 const stateSelector = createSelector(makeLogInPage, (login) => ({ login }));
 
@@ -51,13 +52,27 @@ export const LogIn = (props) => {
 			userID: res.uid,
 			userDisplayName: res.displayName,
 		});
+		const user = {
+			uid: res.uid,
+			userDisplayName: res.displayName,
+			date: Date.now,
+			firstLogIn: true,
+			USD: 0,
+		};
 
+		// axios
+		// 	.get(`http://localhost:8080/api/users/${res.uid}`)
+		// 	.then((response) => console.log(response));
+
+		// POST REQUEST
+		axios
+			.post(`http://localhost:8080/api/users/new/${res.uid}`, user)
+			.then((user) => {
+				console.log(user.data);
+			});
 		history.push("/coins");
 	};
 
-	console.log(
-		`user ${login.userDisplayName} has logged in and their ID is ${login.userID}`
-	);
 	return (
 		<Center h="90vh" bg="offwhite" color="black">
 			<VStack spacing={10}>
